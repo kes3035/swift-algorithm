@@ -2,23 +2,23 @@
 
 var resultArr: [[String]] = []
 var newArr: [String] = []
-for _ in 1...5 {
-    let arr = readLine()!.split(separator: " ").map{String($0)}
-    resultArr.append(arr)
+for _ in 0...4 {
+    let arr: String = readLine()!
+    var charArr: [String] = []
+    for char in arr {
+        charArr.append(String(char))
+    }
+    resultArr.append(charArr)
 }
 // [ [A,A,B,C,D,D], [a,f,z,z], [0,9,1,2,1], [a,8,E,W,g,6], [P,5,h,3,k,x] ]
 repeat {
     for i in 0...4 {
-        if resultArr[i].count == 0 {
-            continue
-        }
-        let firstString = resultArr[i].first!
-        newArr.append(firstString)
-        resultArr[i].remove(at: 0 )
-        if resultArr[i].count == 0 {
-            continue
+        if resultArr[i].count != 0 {
+            var firstString = resultArr[i].first!
+            newArr.append(firstString)
+            resultArr[i].remove(at: 0)
         }
     }
-} while resultArr.isEmpty
+} while ( resultArr[0].isEmpty && resultArr[1].isEmpty && resultArr[2].isEmpty && resultArr[3].isEmpty && resultArr[4].isEmpty )
 print(resultArr)
 print(newArr)
