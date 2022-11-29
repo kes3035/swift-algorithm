@@ -1,30 +1,29 @@
-var resultArr: [String] = []
-var maxArr: [Int] = []
+var countOfArr: [Int] = []
 var arr: [[String]] = []
-var stringArr: [String] = []
 for _ in 1...5 {
     let input = readLine()!
+    countOfArr.append(input.count)
+    var stringArr: [String] = []
     for char in input {
         stringArr.append(String(char))
     }
     arr.append(stringArr)
     stringArr = []
 }
-
-
 for i in 0...4 {
-    maxArr.append(arr[i].count)
-}
-let maxNum = maxArr.sorted(by: >)[0]
-for i in 0...4 {
-    if arr[i].count != maxNum {
-        for _ in 1...(maxNum - arr[i].count) {
-            arr[i].append("@")
+    while arr[i].count < countOfArr.max()! {
+        arr[i].append("@")
+        if arr[i].count == countOfArr.max()! {
+            break
         }
     }
 }
-for i in 0..<maxNum {
-    for j in 0..<maxNum {
+
+// [6개],[6개],[6개],[6개],[6개]
+let maxCount = countOfArr.max()!
+var resultArr: [String] = []
+for i in 0..<maxCount {
+    for j in 0...4 {
         if arr[j][i] == "@" {
             continue
         }
