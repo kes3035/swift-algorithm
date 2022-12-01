@@ -1,0 +1,23 @@
+let numberOfColorPaper: Int = Int(readLine()!)!
+var sizeOfArea: Int = 0
+var paper: [[Int]] = Array(repeating: [Int](repeating: 0, count: 100), count: 100)
+for _ in 1...numberOfColorPaper {
+    let input = readLine()!.split(separator: " ").map{Int($0)!}
+    let x = input[0], y = input[1]
+    
+    for i in x..<x+10 {
+        for j in y..<y+10 {
+            paper[i][j] = 1
+        }
+    }
+}
+for row in paper where row.contains(1) {
+    for i in 0..<row.count {
+        if row[i] == 1 {
+            sizeOfArea += 1
+        }
+    }
+}
+print(sizeOfArea)
+
+// helpFrom: https://duwjdtn11.tistory.com/596
